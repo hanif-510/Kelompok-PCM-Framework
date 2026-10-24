@@ -2,11 +2,9 @@
 
 Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jawa Tengah.
 
-<!-- PETUNJUK: Teks di dalam komentar seperti ini tidak tampil di GitHub. Isi bagian bertanda TODO, lalu hapus komentarnya jika sudah selesai. -->
-
 ## Kelompok
 
-**Nama kelompok:** TODO
+**Nama Anggota kelompok:** 
 
 | No | Nama | NIM |
 |----|------|-----|
@@ -19,12 +17,11 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 ## PCM yang Dipilih
 
 - **Nama:** PCM Gatak
-- **Wilayah:** Kecamatan Gatak, Kabupaten Sukoharjo, Jawa Tengah <!-- cek ulang kebenaran wilayahnya -->
-- **Tujuan website:** TODO <!-- 2-3 kalimat: untuk apa website ini dan siapa penggunanya -->
+- **Wilayah:** Kecamatan Gatak, Kabupaten Sukoharjo, Jawa Tengah 
+- **Tujuan website:** Website ini dibuat untuk memperkenalkan PCM Gatak kepada masyarakat sekaligus menjadi sarana publikasi berita, agenda, dan dokumen, serta menerima pesan dari masyarakat melalui formulir kontak. Seluruh isinya dapat dikelola pengurus lewat panel admin tanpa mengubah kode.
 
 ### Sumber Data
 
-<!-- Catat semua data yang dipakai: profil, berita, foto, struktur pengurus, kontak. Tulis nama pengurus yang memberi izin jika ada. -->
 
 | Data | Sumber | Tanggal diambil | Pemberi izin |
 |------|--------|-----------------|--------------|
@@ -32,24 +29,22 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 ## Kontribusi Anggota
 
-<!-- Isi dengan pekerjaan nyata masing-masing, contoh: desain UI, halaman publik, panel admin, database, deployment, Docker, video, slide, pengumpulan data. -->
-
 | Nama | Kontribusi |
 |------|------------|
-| Raden Bagus Indra Wijaya Nugraha | TODO |
-| Muhammad Valentino Khansa | TODO |
-| Muhammad Afif Haravi | TODO |
-| Hanif | TODO |
-| Sandy Matin Falah | TODO |
+| Raden Bagus Indra Wijaya Nugraha | - |
+| Muhammad Valentino Khansa | - |
+| Muhammad Afif Haravi | - |
+| Hanif | - |
+| Sandy Matin Falah | - |
 
 ## Produksi
 
 | Item | Pilihan | Alasan |
 |------|---------|--------|
-| URL produksi | TODO | Harus tetap menyala sampai penilaian selesai |
-| Platform | TODO | TODO |
-| Database | TODO | TODO |
-| Penyimpanan gambar | TODO | TODO |
+| URL produksi | - | - |
+| Platform | - | - |
+| Database | - | - |
+| Penyimpanan gambar | - | - |
 
 ## Cara Menjalankan
 
@@ -100,7 +95,6 @@ Daftar lengkap ada di [`.env.example`](.env.example). Jangan commit file `.env` 
 
 ## Akun Admin Demo
 
-Tidak ditulis di repo. Kredensial dikirim terpisah ke dosen melalui Google Classroom.
 
 ## Video Demo
 
