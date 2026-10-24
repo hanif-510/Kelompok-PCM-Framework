@@ -2,8 +2,6 @@
 
 Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jawa Tengah.
 
-<!-- PETUNJUK: Teks di dalam komentar seperti ini tidak tampil di GitHub. Isi bagian bertanda TODO, lalu hapus komentarnya jika sudah selesai. -->
-
 ## Kelompok
 
 **Nama kelompok:** TODO
@@ -19,8 +17,8 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 ## PCM yang Dipilih
 
 - **Nama:** PCM Gatak
-- **Wilayah:** Kecamatan Gatak, Kabupaten Sukoharjo, Jawa Tengah <!-- cek ulang kebenaran wilayahnya -->
-- **Tujuan website:** TODO <!-- 2-3 kalimat: untuk apa website ini dan siapa penggunanya -->
+- **Wilayah:** Kecamatan Gatak, Kabupaten Sukoharjo, Jawa Tengah 
+- **Tujuan website:** Website ini dibuat untuk memperkenalkan PCM Gatak kepada masyarakat sekaligus menjadi sarana publikasi berita, agenda, dan dokumen, serta menerima pesan dari masyarakat melalui formulir kontak. Seluruh isinya dapat dikelola pengurus lewat panel admin tanpa mengubah kode.
 
 ### Sumber Data
 
@@ -31,8 +29,6 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 | TODO | TODO | TODO | TODO |
 
 ## Kontribusi Anggota
-
-<!-- Isi dengan pekerjaan nyata masing-masing, contoh: desain UI, halaman publik, panel admin, database, deployment, Docker, video, slide, pengumpulan data. -->
 
 | Nama | Kontribusi |
 |------|------------|
