@@ -95,7 +95,6 @@ Daftar lengkap ada di [`.env.example`](.env.example). Jangan commit file `.env` 
 
 ## Akun Admin Demo
 
-Tidak ditulis di repo. Kredensial dikirim terpisah ke dosen melalui Google Classroom.
 
 ## Video Demo
 
