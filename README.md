@@ -42,7 +42,7 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 | Item | Pilihan | Alasan |
 |------|---------|--------|
-| URL produksi | TODO | Harus tetap menyala sampai penilaian selesai |
+| URL produksi | - | - |
 | Platform | - | - |
 | Database | - | - |
 | Penyimpanan gambar | - | - |
