@@ -4,7 +4,7 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 ## Kelompok
 
-**Nama kelompok:** TODO
+**Nama kelompok:** 
 
 | No | Nama | NIM |
 |----|------|-----|
@@ -22,7 +22,6 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 ### Sumber Data
 
-<!-- Catat semua data yang dipakai: profil, berita, foto, struktur pengurus, kontak. Tulis nama pengurus yang memberi izin jika ada. -->
 
 | Data | Sumber | Tanggal diambil | Pemberi izin |
 |------|--------|-----------------|--------------|
