@@ -32,20 +32,20 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 | Nama | Kontribusi |
 |------|------------|
-| Raden Bagus Indra Wijaya Nugraha | TODO |
-| Muhammad Valentino Khansa | TODO |
-| Muhammad Afif Haravi | TODO |
-| Hanif | TODO |
-| Sandy Matin Falah | TODO |
+| Raden Bagus Indra Wijaya Nugraha | - |
+| Muhammad Valentino Khansa | - |
+| Muhammad Afif Haravi | - |
+| Hanif | - |
+| Sandy Matin Falah | - |
 
 ## Produksi
 
 | Item | Pilihan | Alasan |
 |------|---------|--------|
 | URL produksi | TODO | Harus tetap menyala sampai penilaian selesai |
-| Platform | TODO | TODO |
-| Database | TODO | TODO |
-| Penyimpanan gambar | TODO | TODO |
+| Platform | - | - |
+| Database | - | - |
+| Penyimpanan gambar | - | - |
 
 ## Cara Menjalankan
 
