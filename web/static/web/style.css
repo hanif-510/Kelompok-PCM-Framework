@@ -1,0 +1,46 @@
+:root { --warna: #0b6b3a; --abu: #f3f4f6; --teks: #1f2937; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, Arial, sans-serif; color: var(--teks); line-height: 1.6; }
+a { color: var(--warna); }
+.wadah { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+.utama { padding-top: 24px; padding-bottom: 40px; min-height: 60vh; }
+
+.header { background: var(--warna); color: #fff; }
+.header a { color: #fff; text-decoration: none; }
+.header-isi { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+.merek { display: flex; align-items: center; gap: 10px; }
+.merek small { display: block; opacity: .85; }
+.menu { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.menu a { padding: 4px 0; }
+
+.hero { background: var(--abu); border-radius: 8px; padding: 24px; margin-bottom: 24px; }
+.hero img { max-width: 100%; height: auto; border-radius: 8px; }
+.statistik { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.kartu-stat { background: var(--abu); border-radius: 8px; padding: 16px; text-align: center; }
+.kartu-stat strong { display: block; font-size: 1.8rem; color: var(--warna); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.kartu { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fff; }
+.kartu img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.kartu-isi { padding: 12px 14px; }
+.kartu h3 { margin: 0 0 6px; font-size: 1.05rem; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid #e5e7eb; padding: 8px 10px; text-align: left; }
+th { background: var(--abu); }
+.gulir { overflow-x: auto; }
+
+.pesan { padding: 10px 14px; border-radius: 6px; margin-bottom: 16px; background: #dcfce7; }
+.pesan-error { background: #fee2e2; }
+
+form p { margin: 0 0 12px; }
+form input, form textarea { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font: inherit; }
+button, .tombol { background: var(--warna); color: #fff; border: 0; border-radius: 6px; padding: 8px 16px; cursor: pointer; text-decoration: none; display: inline-block; }
+.errorlist { color: #b91c1c; margin: 0 0 4px; padding-left: 18px; }
+
+.paginasi { display: flex; gap: 12px; align-items: center; margin-top: 20px; }
+.footer { background: #111827; color: #d1d5db; padding-top: 24px; }
+.footer a { color: #a7f3d0; }
+.footer-isi { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.footer-isi ul { list-style: none; padding: 0; margin: 0; }
+.footer-catatan { border-top: 1px solid #374151; margin-top: 16px; padding-top: 12px; padding-bottom: 20px; font-size: .85rem; }

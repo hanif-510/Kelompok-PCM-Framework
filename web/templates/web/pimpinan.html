@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Pimpinan{% endblock %}
+
+{% block content %}
+  <h1>Pimpinan</h1>
+  <div class="grid">
+    {% for p in daftar %}
+      <div class="kartu">
+        {% if p.foto %}<img src="{{ p.foto.url }}" alt="{{ p.nama }}">{% endif %}
+        <div class="kartu-isi">
+          <h3>{{ p.nama }}</h3>
+          <p>{{ p.jabatan }}<br><small>Periode {{ p.periode }}</small></p>
+        </div>
+      </div>
+    {% empty %}
+      <p>Data pimpinan belum tersedia.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

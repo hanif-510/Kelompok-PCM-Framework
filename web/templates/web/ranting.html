@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Ranting{% endblock %}
+
+{% block content %}
+  <h1>Ranting</h1>
+  {% if daftar %}
+    <div class="gulir">
+      <table>
+        <thead>
+          <tr><th>No</th><th>Ranting</th><th>Ketua</th><th>Alamat</th><th>Telepon</th></tr>
+        </thead>
+        <tbody>
+          {% for r in daftar %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ r.nama }}</td>
+              <td>{{ r.ketua|default:"-" }}</td>
+              <td>{{ r.alamat|default:"-" }}</td>
+              <td>{{ r.telepon|default:"-" }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>Data ranting belum tersedia.</p>
+  {% endif %}
+{% endblock %}

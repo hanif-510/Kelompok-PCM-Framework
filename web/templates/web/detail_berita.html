@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ berita.judul }}{% endblock %}
+
+{% block content %}
+  <article>
+    <h1>{{ berita.judul }}</h1>
+    <p><small>{{ berita.tanggal_terbit|date:"j F Y" }}</small></p>
+    {% if berita.gambar %}
+      <img src="{{ berita.gambar.url }}" alt="{{ berita.judul }}" style="max-width:100%;height:auto">
+    {% endif %}
+    {{ berita.isi|linebreaks }}
+  </article>
+
+  {% if lainnya %}
+    <h2>Berita Lainnya</h2>
+    <div class="grid">
+      {% for b in lainnya %}
+        {% include 'web/partials/kartu_berita.html' %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

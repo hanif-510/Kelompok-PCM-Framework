@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <section class="hero">
+    <h1>{% if profil %}{{ profil.nama }}{% else %}PCM Gatak{% endif %}</h1>
+    {% if profil.tagline %}<p>{{ profil.tagline }}</p>{% endif %}
+    {% if profil.gambar_utama %}
+      <img src="{{ profil.gambar_utama.url }}" alt="{{ profil.nama }}">
+    {% endif %}
+  </section>
+
+  <section class="statistik">
+    <div class="kartu-stat"><strong>{{ jumlah_ranting }}</strong>Ranting</div>
+    <div class="kartu-stat"><strong>{{ jumlah_amal_usaha }}</strong>Amal Usaha</div>
+    <div class="kartu-stat"><strong>{{ profil.jumlah_anggota_ktam|default:0 }}</strong>Anggota ber-KTAM</div>
+  </section>
+
+  <h2>Berita Terbaru</h2>
+  <div class="grid">
+    {% for b in berita %}
+      {% include 'web/partials/kartu_berita.html' %}
+    {% empty %}
+      <p>Belum ada berita.</p>
+    {% endfor %}
+  </div>
+  <p><a href="{% url 'web:daftar_berita' %}">Lihat semua berita</a></p>
+
+  <h2>Agenda Mendatang</h2>
+  <ul>
+    {% for a in agenda %}
+      <li><strong>{{ a.nama }}</strong> - {{ a.waktu_mulai|date:"j F Y, H:i" }}{% if a.tempat %}, {{ a.tempat }}{% endif %}</li>
+    {% empty %}
+      <li>Belum ada agenda mendatang.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

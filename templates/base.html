@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% if profil %}{{ profil.nama_singkat }}{% else %}PCM Gatak{% endif %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'web/style.css' %}">
+</head>
+<body>
+  <header class="header">
+    <div class="wadah header-isi">
+      <a class="merek" href="{% url 'web:beranda' %}">
+        {# Taruh logo di web/static/web/img/logo-muhammadiyah.svg (unduh dari Wikimedia Commons, jangan diubah) #}
+        <img src="{% static 'web/img/logo-muhammadiyah.svg' %}" alt="Logo Muhammadiyah" width="48" height="48">
+        <span>
+          <strong>{% if profil %}{{ profil.nama_singkat }}{% else %}PCM Gatak{% endif %}</strong>
+          {% if profil.tagline %}<small>{{ profil.tagline }}</small>{% endif %}
+        </span>
+      </a>
+      <nav class="menu">
+        <a href="{% url 'web:beranda' %}">Beranda</a>
+        <a href="{% url 'web:profil' %}">Profil</a>
+        <a href="{% url 'web:pimpinan' %}">Pimpinan</a>
+        <a href="{% url 'web:ranting' %}">Ranting</a>
+        <a href="{% url 'web:amal_usaha' %}">Amal Usaha</a>
+        <a href="{% url 'web:daftar_berita' %}">Berita</a>
+        <a href="{% url 'web:agenda' %}">Agenda</a>
+        <a href="{% url 'web:unduhan' %}">Unduhan</a>
+        <a href="{% url 'web:kontak' %}">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wadah utama">
+    {% if messages %}
+      {% for pesan in messages %}
+        <div class="pesan pesan-{{ pesan.tags }}">{{ pesan }}</div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="wadah footer-isi">
+      <div>
+        <h3>{% if profil %}{{ profil.nama }}{% else %}PCM Gatak{% endif %}</h3>
+        <p>{{ profil.alamat|default:"Alamat belum tersedia" }}</p>
+        {% if profil.telepon %}<p>Telepon: {{ profil.telepon }}</p>{% endif %}
+        {% if profil.email %}<p>Email: {{ profil.email }}</p>{% endif %}
+      </div>
+      <div>
+        <h3>Tautan Persyarikatan</h3>
+        <ul>
+          {% for t in tautan_terkait %}
+            <li><a href="{{ t.url }}" target="_blank" rel="noopener">{{ t.nama }}</a></li>
+          {% empty %}
+            <li>Belum tersedia</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="wadah footer-catatan">
+      <p>Website ini dibuat untuk tugas kuliah Pemrograman Web berbasis Framework, bukan website resmi PCM Gatak.</p>
+      <p>Logo Muhammadiyah: K. H. Siradj Dahlan, vektor oleh Hibensis, via Wikimedia Commons, lisensi CC BY-SA 4.0</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Kontak{% endblock %}
+
+{% block content %}
+  <h1>Kontak</h1>
+
+  <h2>Sekretariat</h2>
+  <p>{{ profil.alamat|default:"Alamat belum tersedia" }}</p>
+  {% if profil.telepon %}<p>Telepon: {{ profil.telepon }}</p>{% endif %}
+  {% if profil.email %}<p>Email: {{ profil.email }}</p>{% endif %}
+
+  <h2>Kirim Pesan</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Kirim</button>
+  </form>
+{% endblock %}

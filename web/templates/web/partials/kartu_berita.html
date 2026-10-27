@@ -1,0 +1,10 @@
+<article class="kartu">
+  {% if b.gambar %}
+    <img src="{{ b.gambar.url }}" alt="{{ b.judul }}">
+  {% endif %}
+  <div class="kartu-isi">
+    <small>{{ b.tanggal_terbit|date:"j F Y" }}</small>
+    <h3><a href="{% url 'web:detail_berita' b.slug %}">{{ b.judul }}</a></h3>
+    <p>{{ b.ringkasan }}</p>
+  </div>
+</article>

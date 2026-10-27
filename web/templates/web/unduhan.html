@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Unduhan{% endblock %}
+
+{% block content %}
+  <h1>Unduhan</h1>
+  {% for d in daftar %}
+    <div class="kartu" style="margin-bottom:12px">
+      <div class="kartu-isi">
+        <h3>{{ d.judul }}</h3>
+        {% if d.keterangan %}<p>{{ d.keterangan }}</p>{% endif %}
+        <small>Diunggah {{ d.tanggal_unggah|date:"j F Y" }}</small><br>
+        <a class="tombol" href="{{ d.berkas.url }}" download>Unduh</a>
+      </div>
+    </div>
+  {% empty %}
+    <p>Belum ada dokumen.</p>
+  {% endfor %}
+{% endblock %}

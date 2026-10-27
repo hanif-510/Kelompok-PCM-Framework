@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Agenda{% endblock %}
+
+{% block content %}
+  <h1>Agenda</h1>
+
+  <h2>Akan Datang</h2>
+  <ul>
+    {% for a in mendatang %}
+      <li>
+        <strong>{{ a.nama }}</strong><br>
+        {{ a.waktu_mulai|date:"j F Y, H:i" }}{% if a.tempat %} - {{ a.tempat }}{% endif %}
+        {% if a.keterangan %}<br>{{ a.keterangan }}{% endif %}
+      </li>
+    {% empty %}
+      <li>Belum ada agenda mendatang.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Sudah Terlaksana</h2>
+  <ul>
+    {% for a in selesai %}
+      <li>
+        <strong>{{ a.nama }}</strong><br>
+        {{ a.waktu_mulai|date:"j F Y, H:i" }}{% if a.tempat %} - {{ a.tempat }}{% endif %}
+      </li>
+    {% empty %}
+      <li>Belum ada agenda yang terlaksana.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

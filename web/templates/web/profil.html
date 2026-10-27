@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+  <h1>Profil</h1>
+  {% if profil %}
+    <h2>Tentang</h2>
+    {{ profil.tentang|default:"Belum tersedia."|linebreaks }}
+    <h2>Sejarah</h2>
+    {{ profil.sejarah|default:"Belum tersedia."|linebreaks }}
+    <h2>Visi</h2>
+    {{ profil.visi|default:"Belum tersedia."|linebreaks }}
+    <h2>Misi</h2>
+    {% if profil.daftar_misi %}
+      <ol>
+        {% for m in profil.daftar_misi %}<li>{{ m }}</li>{% endfor %}
+      </ol>
+    {% else %}
+      <p>Belum tersedia.</p>
+    {% endif %}
+  {% else %}
+    <p>Profil belum tersedia.</p>
+  {% endif %}
+{% endblock %}

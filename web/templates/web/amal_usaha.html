@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Amal Usaha{% endblock %}
+
+{% block content %}
+  <h1>Amal Usaha</h1>
+  {% for label, isi in kelompok %}
+    <h2>{{ label }}</h2>
+    <div class="grid">
+      {% for a in isi %}
+        <div class="kartu">
+          {% if a.gambar %}<img src="{{ a.gambar.url }}" alt="{{ a.nama }}">{% endif %}
+          <div class="kartu-isi">
+            <h3>{{ a.nama }}</h3>
+            <p>{{ a.deskripsi }}</p>
+            {% if a.alamat %}<small>{{ a.alamat }}</small>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% empty %}
+    <p>Data amal usaha belum tersedia.</p>
+  {% endfor %}
+{% endblock %}
