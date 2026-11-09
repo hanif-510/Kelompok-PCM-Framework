@@ -22,11 +22,11 @@ class Profil(models.Model):
         verbose_name = 'Profil organisasi'
         verbose_name_plural = 'Profil organisasi'
 
-    def daftar_misi(self):
-        return [baris.strip() for baris in self.misi.splitlines() if baris.strip()]
-
     def __str__(self):
         return self.nama
+
+    def daftar_misi(self):
+        return [baris.strip() for baris in self.misi.splitlines() if baris.strip()]
 
 
 class Pimpinan(models.Model):
@@ -103,6 +103,9 @@ class Berita(models.Model):
         ordering = ['-tanggal_terbit']
         verbose_name_plural = 'Berita'
 
+    def __str__(self):
+        return self.judul
+
     def save(self, *args, **kwargs):
         # Slug dibuat sekali supaya URL lama tidak berubah saat judul diedit.
         if not self.slug:
@@ -119,9 +122,6 @@ class Berita(models.Model):
             slug = f'{dasar[:batas - len(akhiran)]}{akhiran}'
             n += 1
         return slug
-
-    def __str__(self):
-        return self.judul
 
 
 class Agenda(models.Model):
