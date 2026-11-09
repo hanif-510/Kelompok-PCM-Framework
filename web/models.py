@@ -90,7 +90,7 @@ class Berita(models.Model):
     STATUS = [('draf', 'Draf'), ('terbit', 'Terbit')]
 
     judul = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(max_length=220, unique=True, blank=True)
     ringkasan = models.CharField(max_length=300)
     isi = models.TextField()
     gambar = models.ImageField(upload_to='berita/', blank=True)
@@ -104,14 +104,21 @@ class Berita(models.Model):
         verbose_name_plural = 'Berita'
 
     def save(self, *args, **kwargs):
+        # Slug dibuat sekali supaya URL lama tidak berubah saat judul diedit.
         if not self.slug:
-            dasar = slugify(self.judul) or 'berita'
-            slug, n = dasar, 2
-            while Berita.objects.filter(slug=slug).exists():
-                slug = f'{dasar}-{n}'
-                n += 1
-            self.slug = slug
+            self.slug = self._buat_slug_unik()
         super().save(*args, **kwargs)
+
+    def _buat_slug_unik(self):
+        batas = self._meta.get_field('slug').max_length
+        dasar = (slugify(self.judul) or 'berita')[:batas]
+        slug, n = dasar, 2
+        lainnya = Berita.objects.exclude(pk=self.pk)
+        while lainnya.filter(slug=slug).exists():
+            akhiran = f'-{n}'
+            slug = f'{dasar[:batas - len(akhiran)]}{akhiran}'
+            n += 1
+        return slug
 
     def __str__(self):
         return self.judul
