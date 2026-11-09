@@ -5,7 +5,12 @@ from django.utils import timezone
 
 from .forms import PesanForm
 from .models import (
-    Agenda, AmalUsaha, Berita, Dokumen, Pimpinan, Profil, Ranting,
+    Agenda,
+    AmalUsaha,
+    Berita,
+    Dokumen,
+    Pimpinan,
+    Ranting,
 )
 
 

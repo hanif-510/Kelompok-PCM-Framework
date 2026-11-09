@@ -1,8 +1,15 @@
 from django.contrib import admin
 
 from .models import (
-    Agenda, AmalUsaha, Berita, Dokumen, PesanMasuk,
-    Pimpinan, Profil, Ranting, TautanTerkait,
+    Agenda,
+    AmalUsaha,
+    Berita,
+    Dokumen,
+    PesanMasuk,
+    Pimpinan,
+    Profil,
+    Ranting,
+    TautanTerkait,
 )
 
 admin.site.site_header = 'Admin Website PCM Gatak'
