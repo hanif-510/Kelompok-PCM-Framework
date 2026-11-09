@@ -162,7 +162,9 @@ STORAGES = {
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
-
+# Situs ini tidak mengirim email (formulir kontak hanya menyimpan ke database),
+# jadi backend console aman. Pengecekan ini dibungkam agar check --deploy bersih.
+SILENCED_SYSTEM_CHECKS = ['mail.E001']
 MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
