@@ -7,3 +7,14 @@ db.sqlite3
 .antigravity-ide/
 .cache/
 .claude/
+
+# Tambahan
+.ruff_cache/
+db.sqlite3-journal
+staticfiles/
+media/
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
