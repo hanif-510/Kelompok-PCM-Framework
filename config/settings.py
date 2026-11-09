@@ -43,7 +43,13 @@ DEBUG = env_bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = env_list('ALLOWED_HOSTS')
 CSRF_TRUSTED_ORIGINS = env_list('CSRF_TRUSTED_ORIGINS')
-
+# Aktifkan hanya di server HTTPS (Render/Railway). Di Docker lokal biarkan False,
+# kalau tidak, localhost:8000 akan dialihkan ke HTTPS dan login admin gagal.
+if env_bool('HTTPS_ONLY'):
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 # Application definition
 
@@ -93,7 +99,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 if DATABASE_URL:
-    DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+    DATABASES = {'default': dj_database_url.parse(DATABASE_URL, conn_max_age=0)}
+    # Transaction pooler (port 6543) tidak mendukung server-side cursor.
+    if str(DATABASES['default'].get('PORT')) == '6543':
+        DATABASES['default']['DISABLE_SERVER_SIDE_CURSORS'] = True
 else:
     DATABASES = {
         'default': {
