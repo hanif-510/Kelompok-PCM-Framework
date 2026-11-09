@@ -12,7 +12,16 @@
   <section class="statistik">
     <div class="kartu-stat"><strong>{{ jumlah_ranting }}</strong>Ranting</div>
     <div class="kartu-stat"><strong>{{ jumlah_amal_usaha }}</strong>Amal Usaha</div>
-    <div class="kartu-stat"><strong>{{ profil.jumlah_anggota_ktam|default:0 }}</strong>Anggota ber-KTAM</div>
+    <div class="kartu-stat">
+      <strong>
+        {% if profil.jumlah_anggota_ktam %}
+          {{ profil.jumlah_anggota_ktam }}
+        {% else %}
+          Belum tersedia
+        {% endif %}
+      </strong>
+      Anggota ber-KTAM
+    </div>
   </section>
 
   <h2>Berita Terbaru</h2>
@@ -28,7 +37,7 @@
   <h2>Agenda Mendatang</h2>
   <ul>
     {% for a in agenda %}
-      <li><strong>{{ a.nama }}</strong> - {{ a.waktu_mulai|date:"j F Y, H:i" }}{% if a.tempat %}, {{ a.tempat }}{% endif %}</li>
+      <li><strong>{{ a.nama }}</strong> — {{ a.waktu_mulai|date:"j F Y, H:i" }}{% if a.tempat %}, {{ a.tempat }}{% endif %}</li>
     {% empty %}
       <li>Belum ada agenda mendatang.</li>
     {% endfor %}
