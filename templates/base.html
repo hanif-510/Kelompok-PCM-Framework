@@ -12,7 +12,7 @@
     <div class="wadah header-isi">
       <a class="merek" href="{% url 'web:beranda' %}">
         {# Taruh logo di web/static/web/img/logo-muhammadiyah.svg (unduh dari Wikimedia Commons, jangan diubah) #}
-        <img src="{% static 'web/img/logo-muhammadiyah.svg' %}" alt="Logo Muhammadiyah" width="48" height="48">
+        <img src="{% static 'web/img/logo_muhammadiyah.png' %}" alt="Logo Muhammadiyah" width="48" height="48">
         <span>
           <strong>{% if profil %}{{ profil.nama_singkat }}{% else %}PCM Gatak{% endif %}</strong>
           {% if profil.tagline %}<small>{{ profil.tagline }}</small>{% endif %}
