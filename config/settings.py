@@ -30,6 +30,12 @@ def env_list(nama):
     """Baca daftar yang dipisah koma, mis. ALLOWED_HOSTS=a.com,b.com."""
     return [item.strip() for item in os.environ.get(nama, '').split(',') if item.strip()]
 
+def env_wajib(nama):
+    """Baca variabel yang tidak boleh kosong."""
+    nilai = os.environ.get(nama)
+    if not nilai:
+        raise ImproperlyConfigured(f'{nama} wajib diisi jika STORAGE_BUCKET dipakai.')
+    return nilai
 
 # Keamanan
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -50,7 +56,8 @@ if env_bool('HTTPS_ONLY'):
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-
+    # Mulai dari 1 jam, naikkan setelah HTTPS terbukti stabil.
+    SECURE_HSTS_SECONDS = int(os.environ.get('HSTS_SECONDS', '3600'))
 # Application definition
 
 INSTALLED_APPS = [
@@ -148,11 +155,31 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Media: folder lokal jika STORAGE_BUCKET kosong, object storage S3 jika terisi.
+# Disk server tidak permanen, jadi produksi wajib memakai object storage.
+STORAGE_BUCKET = os.environ.get('STORAGE_BUCKET')
+
+if STORAGE_BUCKET:
+    MEDIA_STORAGE = {
+        'BACKEND': 'storages.backends.s3.S3Storage',
+        'OPTIONS': {
+            'bucket_name': STORAGE_BUCKET,
+            'endpoint_url': env_wajib('STORAGE_ENDPOINT'),
+            'region_name': env_wajib('STORAGE_REGION'),
+            'access_key': env_wajib('STORAGE_ACCESS_KEY'),
+            'secret_key': env_wajib('STORAGE_SECRET_KEY'),
+            'custom_domain': env_wajib('STORAGE_PUBLIC_DOMAIN'),
+            'signature_version': 's3v4',
+            'addressing_style': 'path',
+            'querystring_auth': False,
+            'file_overwrite': False,
+        },
+    }
+else:
+    MEDIA_STORAGE = {'BACKEND': 'django.core.files.storage.FileSystemStorage'}
+
 STORAGES = {
-    # Penyimpanan media. Akan diganti ke object storage saat deployment.
-    'default': {
-        'BACKEND': 'django.core.files.storage.FileSystemStorage',
-    },
+    'default': MEDIA_STORAGE,
     # WhiteNoise menyajikan file statis saat DEBUG=False.
     'staticfiles': {
         'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
