@@ -34,7 +34,7 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 | Raden Bagus Indra Wijaya Nugraha | Backend, database, dan deployment: konfigurasi settings berbasis environment variable, WhiteNoise untuk file statis, database PostgreSQL di Supabase, migrasi dan seeding data produksi, penyimpanan media ke object storage S3, serta HSTS dan pengecekan `check --deploy`. |
 | Muhammad Valentino Khansa | TODO |
 | Muhammad Afif Haravi | TODO |
-| Hanif | struktur awal website PCM Gatak, UI dan navigasi menu, penyesuaian tampilan/CSS. Implementasi Docker melalui Dockerfile, .dockerignore, dan Docker Compose untuk menjalankan Django dan PostgreSQL. Melakukan pengujian build image dan container, konfigurasi permission dan startup, migrasi database, memastikan website berjalan melalui localhost:8000 menggunakan Gunicorn. |
+| Hanif | struktur awal website PCM Gatak, UI dan navigasi menu, penyesuaian tampilan/CSS. Implementasi Docker melalui Dockerfile, .dockerignore, dan Docker Compose untuk menjalankan Django dan PostgreSQL. Pengujian build image dan container, konfigurasi permission & startup, migrasi database, memastikan website berjalan melalui localhost:8000 menggunakan Gunicorn. |
 | Sandy Matin Falah | TODO |
 
 ## Produksi
