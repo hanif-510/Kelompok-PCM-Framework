@@ -1,10 +1,14 @@
-/* Website PCM Gatak: tema gelap minimalis.
-   Latar abu-abu gelap, teks terang, hijau Muhammadiyah sebagai satu-satunya
-   warna aksen. Hanya mengganti CSS, tidak perlu mengubah template HTML.
+/* Website PCM Gatak: minimalis dengan dua tema, gelap dan terang.
+   Tema gelap adalah bawaan. Tema terang aktif saat <html> punya atribut
+   data-tema="terang" (diatur oleh tema.js lewat tombol di header).
+   Semua warna ada di variabel pada bagian atas, jadi mengubah tema cukup
+   dengan mengganti nilai variabel. Hanya mengganti CSS, tidak perlu mengubah
+   template HTML selain tombol pengalih.
    Font Plus Jakarta Sans dimuat dari Google Fonts; jika offline, otomatis
    memakai font bawaan sistem. */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
+/* ---------- Tema gelap (bawaan) ---------- */
 :root {
   color-scheme: dark;
 
@@ -13,22 +17,75 @@
   --permukaan: #1c211e;
   --permukaan-2: #242b27;
   --garis: #2d3631;
+  --header-bg: rgba(21, 24, 22, .88);
+  --footer-bg: #101311;
 
   /* Teks */
   --teks: #e9eeea;
+  --teks-isi: #cfd8d2;
   --redup: #9aa8a0;
+  --placeholder: #6f7d75;
+  --catatan: #78867e;
 
   /* Hijau */
   --hijau: #0f7d45;          /* tombol (teks putih di atasnya tetap terbaca) */
   --hijau-hover: #13924f;
-  --aksen: #4cc38a;          /* tautan dan judul di atas latar gelap */
+  --aksen: #4cc38a;          /* tautan dan judul */
+  --aksen-hover: #7fdcae;
+  --aksen-garis: rgba(76, 195, 138, .45);
   --aksen-redup: rgba(76, 195, 138, .16);
+  --kartu-hover: rgba(76, 195, 138, .55);
+  --cahaya: rgba(47, 179, 109, .2);
+
+  /* Interaksi */
+  --hover-baris: rgba(255, 255, 255, .025);
 
   /* Status */
   --galat: #ff9b92;
+  --sukses-bg: rgba(47, 179, 109, .12);
+  --sukses-garis: rgba(76, 195, 138, .4);
+  --sukses-teks: #c4f0da;
+  --galat-bg: rgba(255, 90, 78, .12);
+  --galat-garis: rgba(255, 130, 120, .45);
 
   --radius: 14px;
   --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* ---------- Tema terang ---------- */
+:root[data-tema="terang"] {
+  color-scheme: light;
+
+  --latar: #f6f8f7;
+  --permukaan: #ffffff;
+  --permukaan-2: #eef3f0;
+  --garis: #dce5df;
+  --header-bg: rgba(246, 248, 247, .88);
+  --footer-bg: #eaf0ec;
+
+  --teks: #17261e;
+  --teks-isi: #2f3f36;
+  --redup: #5d6e65;
+  --placeholder: #8a9a91;
+  --catatan: #6b7b72;
+
+  --hijau: #0b6b3a;
+  --hijau-hover: #08572f;
+  --aksen: #0b6b3a;
+  --aksen-hover: #08572f;
+  --aksen-garis: rgba(11, 107, 58, .4);
+  --aksen-redup: rgba(11, 107, 58, .18);
+  --kartu-hover: rgba(11, 107, 58, .5);
+  --cahaya: rgba(11, 107, 58, .12);
+
+  --hover-baris: rgba(0, 0, 0, .03);
+
+  --galat: #b42318;
+  --sukses-bg: rgba(11, 107, 58, .1);
+  --sukses-garis: rgba(11, 107, 58, .35);
+  --sukses-teks: #0a4a2a;
+  --galat-bg: rgba(180, 35, 24, .08);
+  --galat-garis: rgba(180, 35, 24, .35);
 }
 
 * { box-sizing: border-box; }
@@ -45,8 +102,8 @@ body {
 
 ::selection { background: var(--hijau); color: #fff; }
 
-a { color: var(--aksen); text-underline-offset: 3px; text-decoration-color: rgba(76, 195, 138, .45); }
-a:hover { color: #7fdcae; text-decoration-color: currentColor; }
+a { color: var(--aksen); text-underline-offset: 3px; text-decoration-color: var(--aksen-garis); }
+a:hover { color: var(--aksen-hover); text-decoration-color: currentColor; }
 :focus-visible { outline: 2px solid var(--aksen); outline-offset: 3px; border-radius: 6px; }
 
 img { max-width: 100%; height: auto; }
@@ -61,17 +118,17 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
 .utama h2 { font-size: 1.25rem; font-weight: 600; color: var(--aksen); margin: 56px 0 18px; }
 .utama h1 + h2 { margin-top: 8px; }
 h3 { font-size: 1.05rem; font-weight: 600; }
-.utama p { margin: 0 0 1em; color: #cfd8d2; }
+.utama p { margin: 0 0 1em; color: var(--teks-isi); }
 .utama small { color: var(--redup); font-size: .85rem; }
 .utama ul { padding-left: 1.25em; }
-.utama li { margin-bottom: 6px; color: #cfd8d2; }
+.utama li { margin-bottom: 6px; color: var(--teks-isi); }
 .utama li::marker { color: var(--aksen); }
 .utama strong { color: var(--teks); }
 
 /* ---------- Header dan menu ---------- */
 .header {
   position: sticky; top: 0; z-index: 10;
-  background: rgba(21, 24, 22, .88);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--garis);
@@ -84,7 +141,7 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 .merek { display: flex; align-items: center; gap: 12px; }
 .merek strong { font-weight: 700; letter-spacing: -0.01em; }
 .merek small { display: block; color: var(--redup); font-size: .8rem; line-height: 1.3; }
-.menu { display: flex; flex-wrap: wrap; gap: 2px; }
+.menu { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
 .menu a {
   padding: 6px 12px; border-radius: 999px;
   color: var(--redup); font-size: .92rem; font-weight: 500;
@@ -103,7 +160,7 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 }
 .hero::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(560px circle at 100% 0%, rgba(47, 179, 109, .2), transparent 62%);
+  background: radial-gradient(560px circle at 100% 0%, var(--cahaya), transparent 62%);
 }
 .hero > * { position: relative; }
 .utama .hero h1 {
@@ -135,7 +192,7 @@ h3 { font-size: 1.05rem; font-weight: 600; }
   border-radius: var(--radius); overflow: hidden;
   transition: border-color .2s;
 }
-.kartu:hover { border-color: rgba(76, 195, 138, .55); }
+.kartu:hover { border-color: var(--kartu-hover); }
 .kartu img { width: 100%; height: 180px; object-fit: cover; display: block; }
 .kartu-isi { padding: 16px 18px 18px; }
 .kartu h3 { margin: 4px 0 8px; }
@@ -151,17 +208,17 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 table { width: 100%; border-collapse: collapse; }
 th, td { border: 0; border-bottom: 1px solid var(--garis); padding: 12px 16px; text-align: left; }
 th { background: var(--permukaan-2); color: var(--teks); font-weight: 600; font-size: .92rem; }
-td { color: #cfd8d2; }
+td { color: var(--teks-isi); }
 tbody tr:last-child td { border-bottom: 0; }
-tbody tr:hover td { background: rgba(255, 255, 255, .025); }
+tbody tr:hover td { background: var(--hover-baris); }
 
 /* ---------- Pesan ---------- */
 .pesan {
   padding: 12px 16px; border-radius: 12px; margin-bottom: 20px;
-  background: rgba(47, 179, 109, .12); border: 1px solid rgba(76, 195, 138, .4);
-  color: #c4f0da;
+  background: var(--sukses-bg); border: 1px solid var(--sukses-garis);
+  color: var(--sukses-teks);
 }
-.pesan-error { background: rgba(255, 90, 78, .12); border-color: rgba(255, 130, 120, .45); color: var(--galat); }
+.pesan-error { background: var(--galat-bg); border-color: var(--galat-garis); color: var(--galat); }
 
 /* ---------- Formulir dan tombol ---------- */
 form p { margin: 0 0 16px; }
@@ -172,7 +229,7 @@ form input, form textarea, form select {
   border: 1px solid var(--garis); border-radius: 10px;
   font: inherit; transition: border-color .2s, box-shadow .2s;
 }
-form input::placeholder, form textarea::placeholder { color: #6f7d75; }
+form input::placeholder, form textarea::placeholder { color: var(--placeholder); }
 form input:focus, form textarea:focus, form select:focus {
   outline: none; border-color: var(--aksen); box-shadow: 0 0 0 3px var(--aksen-redup);
 }
@@ -185,6 +242,21 @@ button, .tombol {
 button:hover, .tombol:hover { background: var(--hijau-hover); color: #fff; }
 .errorlist { color: var(--galat); margin: 0 0 6px; padding-left: 18px; font-size: .9rem; }
 
+/* ---------- Tombol pengalih tema (di header) ---------- */
+.header .tombol-tema {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; padding: 0; margin-left: 8px;
+  background: var(--permukaan); color: var(--redup);
+  border: 1px solid var(--garis); border-radius: 50%;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.header .tombol-tema:hover { background: var(--permukaan-2); color: var(--teks); border-color: var(--aksen); }
+.tombol-tema svg { width: 18px; height: 18px; }
+/* Tema gelap menampilkan matahari (klik untuk terang); tema terang menampilkan bulan */
+.tombol-tema .ikon-bulan { display: none; }
+:root[data-tema="terang"] .tombol-tema .ikon-matahari { display: none; }
+:root[data-tema="terang"] .tombol-tema .ikon-bulan { display: block; }
+
 /* ---------- Paginasi ---------- */
 .paginasi { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 28px; color: var(--redup); }
 .paginasi a {
@@ -195,7 +267,7 @@ button:hover, .tombol:hover { background: var(--hijau-hover); color: #fff; }
 .paginasi a:hover { border-color: var(--aksen); }
 
 /* ---------- Footer ---------- */
-.footer { background: #101311; color: var(--redup); padding-top: 48px; border-top: 1px solid var(--garis); }
+.footer { background: var(--footer-bg); color: var(--redup); padding-top: 48px; border-top: 1px solid var(--garis); }
 .footer h3 { color: var(--teks); margin-bottom: 12px; }
 .footer p { margin: 0 0 .5em; }
 .footer a { color: var(--aksen); }
@@ -204,7 +276,7 @@ button:hover, .tombol:hover { background: var(--hijau-hover); color: #fff; }
 .footer-isi li { margin-bottom: 8px; }
 .footer-catatan {
   margin-top: 36px; padding-top: 16px; padding-bottom: 28px;
-  border-top: 1px solid var(--garis); font-size: .85rem; color: #78867e;
+  border-top: 1px solid var(--garis); font-size: .85rem; color: var(--catatan);
 }
 
 /* ---------- Layar kecil ---------- */
@@ -213,6 +285,7 @@ button:hover, .tombol:hover { background: var(--hijau-hover); color: #fff; }
   .menu { width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .menu::-webkit-scrollbar { display: none; }
   .menu a { white-space: nowrap; }
+  .header .tombol-tema { flex-shrink: 0; }
 }
 @media (max-width: 640px) {
   .utama { padding-top: 28px; }
