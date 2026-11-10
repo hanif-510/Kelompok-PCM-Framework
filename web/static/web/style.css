@@ -1,10 +1,62 @@
-:root { --warna: #0b6b3a; --abu: #f3f4f6; --teks: #1f2937; }
-* { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, Arial, sans-serif; color: var(--teks); line-height: 1.6; }
-a { color: var(--warna); }
-.wadah { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
-.utama { padding-top: 24px; padding-bottom: 40px; min-height: 60vh; }
+/* Website PCM Gatak: tema hijau minimalis.
+   Hanya mengganti CSS, tidak perlu mengubah template HTML.
+   Font Plus Jakarta Sans dimuat dari Google Fonts; jika offline, otomatis
+   memakai font bawaan sistem. */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
+:root {
+  --hijau: #0b6b3a;          /* hijau Muhammadiyah, warna utama */
+  --hijau-gelap: #0a4a2a;    /* hero dan footer */
+  --hijau-hover: #08572f;
+  --hijau-muda: #eaf4ee;     /* permukaan lembut */
+  --latar: #fbfdfc;
+  --teks: #17261e;
+  --redup: #5d6e65;
+  --garis: #dde8e1;
+  --putih: #ffffff;
+  --galat: #b42318;
+  --galat-muda: #fef0ee;
+  --radius: 14px;
+  /* variabel lama, masih dipakai aturan lama pada langkah awal */
+  --warna: #0b6b3a;
+  --abu: #f3f4f6;
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--teks);
+  background: var(--latar);
+}
+
+::selection { background: var(--hijau-muda); color: var(--hijau-gelap); }
+
+a { color: var(--hijau); text-underline-offset: 3px; }
+a:hover { color: var(--hijau-hover); }
+:focus-visible { outline: 3px solid rgba(11, 107, 58, .35); outline-offset: 2px; border-radius: 6px; }
+
+img { max-width: 100%; height: auto; }
+
+/* ---------- Tata letak ---------- */
+.wadah { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.utama { padding-top: 40px; padding-bottom: 72px; min-height: 60vh; }
+
+/* ---------- Judul ---------- */
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; margin: 0; }
+.utama h1 { font-size: clamp(1.9rem, 3.2vw + 1rem, 2.75rem); font-weight: 700; margin-bottom: 28px; }
+.utama h2 { font-size: 1.3rem; font-weight: 600; color: var(--hijau); margin: 48px 0 16px; }
+.utama h1 + h2 { margin-top: 8px; }
+h3 { font-size: 1.05rem; font-weight: 600; }
+.utama p { margin: 0 0 1em; }
+.utama small { color: var(--redup); font-size: .85rem; }
+
+/* ---------- Komponen (aturan lama, dirapikan di langkah berikutnya) ---------- */
 .header { background: var(--warna); color: #fff; }
 .header a { color: #fff; text-decoration: none; }
 .header-isi { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
@@ -12,32 +64,26 @@ a { color: var(--warna); }
 .merek small { display: block; opacity: .85; }
 .menu { display: flex; flex-wrap: wrap; gap: 6px 14px; }
 .menu a { padding: 4px 0; }
-
 .hero { background: var(--abu); border-radius: 8px; padding: 24px; margin-bottom: 24px; }
 .hero img { max-width: 100%; height: auto; border-radius: 8px; }
 .statistik { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
 .kartu-stat { background: var(--abu); border-radius: 8px; padding: 16px; text-align: center; }
 .kartu-stat strong { display: block; font-size: 1.8rem; color: var(--warna); }
-
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 .kartu { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fff; }
 .kartu img { width: 100%; height: 180px; object-fit: cover; display: block; }
 .kartu-isi { padding: 12px 14px; }
 .kartu h3 { margin: 0 0 6px; font-size: 1.05rem; }
-
 table { width: 100%; border-collapse: collapse; }
 th, td { border: 1px solid #e5e7eb; padding: 8px 10px; text-align: left; }
 th { background: var(--abu); }
 .gulir { overflow-x: auto; }
-
 .pesan { padding: 10px 14px; border-radius: 6px; margin-bottom: 16px; background: #dcfce7; }
 .pesan-error { background: #fee2e2; }
-
 form p { margin: 0 0 12px; }
 form input, form textarea { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font: inherit; }
 button, .tombol { background: var(--warna); color: #fff; border: 0; border-radius: 6px; padding: 8px 16px; cursor: pointer; text-decoration: none; display: inline-block; }
 .errorlist { color: #b91c1c; margin: 0 0 4px; padding-left: 18px; }
-
 .paginasi { display: flex; gap: 12px; align-items: center; margin-top: 20px; }
 .footer { background: #111827; color: #d1d5db; padding-top: 24px; }
 .footer a { color: #a7f3d0; }
