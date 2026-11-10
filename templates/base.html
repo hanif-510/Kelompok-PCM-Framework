@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% if profil %}{{ profil.nama_singkat }}{% else %}PCM Gatak{% endif %}{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'web/style.css' %}">
+  <script src="{% static 'web/tema.js' %}"></script>
 </head>
 <body>
   <header class="header">
@@ -27,7 +28,10 @@
         <a href="{% url 'web:daftar_berita' %}">Berita</a>
         <a href="{% url 'web:agenda' %}">Agenda</a>
         <a href="{% url 'web:unduhan' %}">Unduhan</a>
-        <a href="{% url 'web:kontak' %}">Kontak</a>
+                <button type="button" class="tombol-tema" aria-label="Ganti ke tema terang" title="Ganti ke tema terang">
+          <svg class="ikon-matahari" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="ikon-bulan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </nav>
     </div>
   </header>
