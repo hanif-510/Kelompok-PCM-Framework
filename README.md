@@ -31,10 +31,10 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 | Nama | Kontribusi |
 |------|------------|
-| Raden Bagus Indra Wijaya Nugraha | Backend, database, dan deployment: konfigurasi settings berbasis environment variable, WhiteNoise untuk file statis, database PostgreSQL di Supabase, migrasi dan seeding data produksi, penyimpanan media ke object storage S3, serta HSTS dan pengecekan `check --deploy` |
+| Raden Bagus Indra Wijaya Nugraha | Backend, database, dan deployment: konfigurasi settings berbasis environment variable, WhiteNoise untuk file statis, database PostgreSQL di Supabase, migrasi dan seeding data produksi, penyimpanan media ke object storage S3, serta HSTS dan pengecekan `check --deploy`. |
 | Muhammad Valentino Khansa | TODO |
 | Muhammad Afif Haravi | TODO |
-| Hanif | TODO |
+| Hanif | Pengembangan struktur awal website dan front-end: membangun struktur halaman website PCM Gatak, mengembangkan tampilan antarmuka halaman pimpinan dan navigasi menu, melakukan styling dan penyesuaian CSS, serta implementasi Docker melalui Dockerfile, .dockerignore, dan Docker Compose untuk menjalankan aplikasi Django dan PostgreSQL. Melakukan pengujian build image, menjalankan container, memperbaiki konfigurasi permission dan startup container, menjalankan migrasi database, serta memastikan website berhasil diakses melalui localhost:8000 menggunakan Gunicorn. |
 | Sandy Matin Falah | TODO |
 
 ## Produksi
@@ -69,7 +69,9 @@ Jika `DATABASE_URL` dan `STORAGE_BUCKET` dikosongkan, proyek memakai SQLite dan 
 
 ### Dengan Docker
 
-Bagian ini menunggu `Dockerfile` dan `compose.yaml` dari Hanif.
+Docker telah dikonfigurasi menggunakan Dockerfile dan compose.yaml untuk menjalankan aplikasi Django dan PostgreSQL dalam container.
+
+Prasyarat: Docker Desktop sudah terpasang dan berjalan.
 
 ```bash
 cp .env.example .env      # lalu isi nilainya
@@ -77,6 +79,34 @@ docker compose up --build
 ```
 
 Buka `http://localhost:8000`.
+
+Panel admin tersedia di `http://localhost:8000/admin/`.
+
+Untuk mengisi data awal PCM Gatak:
+
+```bash
+docker compose exec web uv run --no-sync python manage.py seed_pcm
+```
+
+Untuk membuat akun administrator:
+
+```bash
+docker compose exec web uv run --no-sync python manage.py createsuperuser
+```
+
+Untuk menghentikan container:
+
+```bash
+docker compose down
+```
+
+Untuk menghentikan container sekaligus menghapus volume database dan media:
+
+```bash
+docker compose down -v
+```
+
+**Catatan:** Perintah `docker compose down -v` akan menghapus volume database dan media yang tersimpan di Docker.
 
 ## Environment Variable
 
@@ -120,16 +150,17 @@ File PDF ada di [`docs/slides/`](docs/slides/).
 
 ## Struktur Repo
 
-```
+```text
 .
 ├── README.md
 ├── .env.example
 ├── .gitignore
+├── .dockerignore
 ├── manage.py
 ├── pyproject.toml
 ├── uv.lock
-├── Dockerfile              # paket Hanif
-├── compose.yaml            # paket Hanif
+├── Dockerfile              # Konfigurasi image aplikasi Django oleh Hanif
+├── compose.yaml             # Konfigurasi Django dan PostgreSQL oleh Hanif
 ├── config/                 # settings, urls, wsgi
 ├── web/
 │   ├── management/commands/seed_pcm.py
