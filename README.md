@@ -159,8 +159,8 @@ File PDF ada di [`docs/slides/`](docs/slides/).
 ├── manage.py
 ├── pyproject.toml
 ├── uv.lock
-├── Dockerfile              # Konfigurasi image aplikasi Django oleh Hanif
-├── compose.yaml             # Konfigurasi Django dan PostgreSQL oleh Hanif
+├── Dockerfile              
+├── compose.yaml            
 ├── config/                 # settings, urls, wsgi
 ├── web/
 │   ├── management/commands/seed_pcm.py
