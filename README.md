@@ -1,6 +1,6 @@
 # Website PCM Gatak
 
-Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jawa Tengah.
+Website PCM Gatak, Kabupaten Sukoharjo, Jawa Tengah. Proyek ini dibuat sebagai tugas mata kuliah Pemrograman Web berbasis Framework dan **bukan website resmi** Pimpinan Cabang Muhammadiyah (PCM) Gatak.
 
 ## Kelompok
 
@@ -31,7 +31,7 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 | Nama | Kontribusi |
 |------|------------|
-| Raden Bagus Indra Wijaya Nugraha | Backend, database, dan deployment: konfigurasi settings berbasis environment variable, WhiteNoise untuk file statis, database PostgreSQL di Supabase, migrasi dan seeding data produksi, penyimpanan media ke object storage S3, serta HSTS dan pengecekan `check --deploy`. |
+| Raden Bagus Indra Wijaya Nugraha | Backend, database, dan deployment. Penataan proyek uv dan dependensi, konfigurasi ruff, `.gitignore` dan `.env.example`, settings berbasis environment variable, WhiteNoise untuk file statis, kerangka command `seed_pcm` yang idempotent beserta testnya, serta test queryset berita terbit, slug, dan admin (termasuk perbaikan `max_length` slug untuk PostgreSQL). Database PostgreSQL di Supabase (Session pooler), migrasi ke produksi, dan Row Level Security di semua tabel. Penyimpanan media ke Supabase Storage lewat S3 yang sudah diuji unggah dari admin, HSTS, `SECURE_PROXY_SSL_HEADER`, dan pengecekan `check --deploy`. Perbaikan logo dan tampilan kartu anggota ber-KTAM di beranda. Review konfigurasi Docker. |
 | Muhammad Valentino Khansa | TODO |
 | Muhammad Afif Haravi | TODO |
 | Hanif | struktur awal website PCM Gatak, UI dan navigasi menu, penyesuaian tampilan/CSS. Implementasi Docker melalui Dockerfile, .dockerignore, dan Docker Compose untuk menjalankan Django dan PostgreSQL. Pengujian build image dan container, konfigurasi permission & startup, migrasi database, memastikan website berjalan melalui localhost:8000 menggunakan Gunicorn. |
@@ -42,9 +42,14 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 | Item | Pilihan | Alasan |
 |------|---------|--------|
 | URL produksi | TODO | Harus tetap menyala sampai penilaian selesai |
-| Platform | TODO | TODO |
-| Database | PostgreSQL di Supabase (Session pooler, port 5432) | Database terkelola dan gratis. Session pooler mendukung IPv4 dan cocok dengan koneksi Django biasa |
-| Penyimpanan gambar | Supabase Storage lewat endpoint S3 dan `django-storages` | Disk server platform deploy tidak permanen, sehingga gambar upload akan hilang setelah redeploy jika disimpan lokal |
+| Platform | Render (Web Service memakai `Dockerfile`, paket gratis) <!-- perbarui setelah deploy --> | Memakai `Dockerfile` yang sama dengan Docker lokal, HTTPS disediakan otomatis, dan paket gratis cukup untuk penilaian |
+| Database | PostgreSQL di Supabase (Session pooler, port 5432) | Database terkelola dan gratis. Session pooler mendukung IPv4 dan cocok dengan koneksi Django biasa. Row Level Security aktif di semua tabel |
+| Penyimpanan gambar | Supabase Storage lewat endpoint S3 dan `django-storages` (bucket publik `media`) | Disk server platform deploy tidak permanen, sehingga gambar upload akan hilang setelah redeploy jika disimpan lokal. Sudah diuji: gambar yang diunggah dari admin tersimpan di bucket |
+
+**Catatan layanan gratis:**
+
+- Instance gratis Render tidur setelah sekitar 15 menit tanpa trafik dan butuh sekitar satu menit untuk bangun, jadi kunjungan pertama bisa lambat. Lihat [dokumentasi Render](https://render.com/docs/free).
+- Proyek Supabase paket gratis dijeda jika aktivitas database rendah selama 7 hari dan bisa dipulihkan lewat Resume project di dashboard. Lihat [dokumentasi Supabase](https://supabase.com/docs/guides/platform/free-plan-pausing).
 
 ## Cara Menjalankan
 
@@ -121,6 +126,7 @@ Daftar lengkap ada di [`.env.example`](.env.example). Jangan commit file `.env` 
 | `HTTPS_ONLY` | `True` hanya di server HTTPS. Mengaktifkan redirect SSL, cookie aman, dan HSTS |
 | `HSTS_SECONDS` | Durasi HSTS dalam detik. Mulai dari 3600, naikkan setelah HTTPS terbukti stabil |
 | `DATABASE_URL` | URL PostgreSQL. Kosong berarti SQLite lokal |
+| `POSTGRES_PASSWORD` | Password database PostgreSQL untuk Docker Compose. Wajib diisi di `.env` saat memakai `docker compose` |
 | `STORAGE_BUCKET` | Nama bucket. Kosong berarti media disimpan di folder lokal |
 | `STORAGE_ENDPOINT` | Endpoint S3 dari Supabase Storage |
 | `STORAGE_REGION` | Region bucket |
