@@ -1,24 +1,55 @@
+
 {% extends 'base.html' %}
 {% block title %}Berita{% endblock %}
 
 {% block content %}
   <h1>Berita</h1>
+
+  <!-- Form Pencarian Berita -->
+  <form method="get">
+    <input
+      type="text"
+      name="q"
+      placeholder="Cari berita..."
+      value="{{ kata_kunci }}"
+    >
+    <button type="submit">Cari</button>
+
+    {% if kata_kunci %}
+      <a href="{% url 'web:daftar_berita' %}">Reset</a>
+    {% endif %}
+  </form>
+
+  <!-- Daftar Berita -->
   <div class="grid">
     {% for b in page_obj %}
       {% include 'web/partials/kartu_berita.html' %}
     {% empty %}
-      <p>Belum ada berita.</p>
+      {% if kata_kunci %}
+        <p>Berita dengan kata kunci "{{ kata_kunci }}" tidak ditemukan.</p>
+      {% else %}
+        <p>Belum ada berita.</p>
+      {% endif %}
     {% endfor %}
   </div>
 
+  <!-- Pagination -->
   {% if page_obj.has_other_pages %}
     <nav class="paginasi">
       {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}">&laquo; Sebelumnya</a>
+        <a href="?q={{ kata_kunci|urlencode }}&page={{ page_obj.previous_page_number }}">
+          &laquo; Sebelumnya
+        </a>
       {% endif %}
-      <span>Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}</span>
+
+      <span>
+        Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}
+      </span>
+
       {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Berikutnya &raquo;</a>
+        <a href="?q={{ kata_kunci|urlencode }}&page={{ page_obj.next_page_number }}">
+          Berikutnya &raquo;
+        </a>
       {% endif %}
     </nav>
   {% endif %}
