@@ -1,4 +1,3 @@
-
 services:
   db:
     image: postgres:17
@@ -7,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: pcm_gatak
       POSTGRES_USER: pcm_user
-      POSTGRES_PASSWORD: pcm_docker_password
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD belum diatur di .env}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -23,7 +22,7 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgres://pcm_user:pcm_docker_password@db:5432/pcm_gatak
+      DATABASE_URL: postgres://pcm_user:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD belum diatur di .env}@db:5432/pcm_gatak
       DEBUG: "False"
       ALLOWED_HOSTS: localhost,127.0.0.1
       HTTPS_ONLY: "False"
