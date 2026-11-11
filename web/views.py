@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 
@@ -47,9 +48,23 @@ def amal_usaha(request):
 
 
 def daftar_berita(request):
-    paginator = Paginator(Berita.objects.terbit(), 6)
+    kata_kunci = request.GET.get('q', '').strip()
+
+    berita = Berita.objects.terbit()
+
+    if kata_kunci:
+        berita = berita.filter(
+            Q(judul__icontains=kata_kunci)
+            | Q(ringkasan__icontains=kata_kunci)
+        )
+
+    paginator = Paginator(berita, 6)
     halaman = paginator.get_page(request.GET.get('page'))
-    return render(request, 'web/daftar_berita.html', {'page_obj': halaman})
+
+    return render(request, 'web/daftar_berita.html', {
+        'page_obj': halaman,
+        'kata_kunci': kata_kunci,
+    })
 
 
 def detail_berita(request, slug):
