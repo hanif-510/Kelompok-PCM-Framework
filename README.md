@@ -50,7 +50,7 @@ Website resmi Pimpinan Cabang Muhammadiyah (PCM) Gatak, Kabupaten Sukoharjo, Jaw
 
 ### Dengan uv (di laptop)
 
-Prasyarat: Python 3.12 atau lebih baru dan [uv](https://docs.astral.sh/uv/).
+Prasyarat: Python 3.14 atau lebih baru dan [uv](https://docs.astral.sh/uv/).
 
 ```bash
 git clone https://github.com/hanif-510/Kelompok-PCM-Framework.git
