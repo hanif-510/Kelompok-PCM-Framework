@@ -1,0 +1,31 @@
+name: Django Tests
+
+on:
+  push:
+    branches: [main, master, feat/pencarian-berita]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create test environment
+        run: |
+          echo "SECRET_KEY=test-secret-key-for-ci-only" > .env
+          echo "DEBUG=False" >> .env
+          echo "POSTGRES_PASSWORD=test-password-for-ci-only" >> .env
+
+      - name: Build and start Docker containers
+        run: docker compose up -d --build
+
+      - name: Run Django tests
+        run: docker compose exec -T web uv run --no-sync python manage.py test
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down
