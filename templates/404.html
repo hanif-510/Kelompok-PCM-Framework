@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Halaman Tidak Ditemukan{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>404</h1>
+  <p>Halaman yang kamu cari tidak ditemukan. Alamatnya mungkin salah atau halaman sudah dipindahkan.</p>
+  <p><a class="tombol" href="{% url 'web:beranda' %}">Kembali ke Beranda</a></p>
+</section>
+{% endblock %}
