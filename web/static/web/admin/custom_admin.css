@@ -1,0 +1,227 @@
+
+/* =========================================
+   PCM GATAK - MODERN ADMIN DASHBOARD
+   Theme: Emerald Green, White & Gold
+========================================= */
+
+:root {
+    --pcm-primary: #087A50;
+    --pcm-primary-dark: #075638;
+    --pcm-sidebar: #103D2E;
+    --pcm-gold: #D6B45A;
+    --pcm-background: #F5F8F6;
+    --pcm-white: #FFFFFF;
+    --pcm-text: #26382F;
+    --pcm-muted: #819087;
+    --pcm-border: #E5ECE7;
+}
+
+/* GLOBAL */
+body {
+    background: var(--pcm-background) !important;
+    color: var(--pcm-text);
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* HEADER */
+.main-header {
+    background: var(--pcm-white) !important;
+    border-bottom: 1px solid var(--pcm-border) !important;
+    box-shadow: 0 2px 8px rgba(16, 61, 46, 0.04);
+}
+
+.main-header .nav-link {
+    color: var(--pcm-text) !important;
+}
+
+/* SIDEBAR */
+.main-sidebar {
+    background: var(--pcm-sidebar) !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+}
+
+/* BRAND */
+.brand-link {
+    background: var(--pcm-sidebar) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+    padding: 18px 15px !important;
+}
+
+.brand-link .brand-text {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px;
+}
+
+/* SIDEBAR MENU */
+.nav-sidebar .nav-link {
+    color: #D5E4DC !important;
+    border-radius: 8px !important;
+    margin: 4px 10px;
+    transition: all 0.2s ease;
+}
+
+.nav-sidebar .nav-link:hover {
+    background: rgba(255,255,255,0.10) !important;
+    color: #FFFFFF !important;
+}
+
+/* ACTIVE MENU */
+.nav-sidebar .nav-link.active {
+    background: var(--pcm-primary) !important;
+    color: #FFFFFF !important;
+    border-left: 3px solid var(--pcm-gold);
+    box-shadow: none !important;
+}
+
+.nav-sidebar .nav-icon {
+    color: var(--pcm-gold) !important;
+}
+
+/* CONTENT */
+.content-wrapper {
+    background: var(--pcm-background) !important;
+}
+
+.content-header h1 {
+    color: var(--pcm-sidebar) !important;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+    background: transparent !important;
+}
+
+/* CARDS */
+.card {
+    background: var(--pcm-white) !important;
+    border: 1px solid var(--pcm-border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(16, 61, 46, 0.04);
+    overflow: hidden;
+}
+
+.card-header {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid var(--pcm-border) !important;
+    color: var(--pcm-sidebar) !important;
+    font-weight: 600;
+}
+
+.card-title {
+    font-weight: 700;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background: var(--pcm-primary) !important;
+    border-color: var(--pcm-primary) !important;
+    border-radius: 7px !important;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: var(--pcm-primary-dark) !important;
+    border-color: var(--pcm-primary-dark) !important;
+}
+
+/* TABLE */
+.table {
+    color: var(--pcm-text) !important;
+}
+
+.table thead th {
+    background: #EDF4EF !important;
+    color: var(--pcm-sidebar) !important;
+    border-bottom: 1px solid var(--pcm-border) !important;
+    font-weight: 700;
+}
+
+.table td {
+    border-color: var(--pcm-border) !important;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background: #F5FAF6 !important;
+}
+
+/* INPUT */
+.form-control,
+.custom-select {
+    border: 1px solid var(--pcm-border) !important;
+    border-radius: 7px !important;
+}
+
+.form-control:focus,
+.custom-select:focus {
+    border-color: var(--pcm-primary) !important;
+    box-shadow: 0 0 0 3px rgba(8,122,80,0.10) !important;
+}
+
+/* LINKS */
+a {
+    color: var(--pcm-primary);
+}
+
+a:hover {
+    color: var(--pcm-primary-dark);
+}
+
+/* BADGES */
+.badge-success {
+    background: var(--pcm-primary) !important;
+}
+
+/* FOOTER */
+.main-footer {
+    background: #FFFFFF !important;
+    border-top: 1px solid var(--pcm-border) !important;
+    color: var(--pcm-muted);
+}
+
+/* =================================
+   PCM GATAK - BUTTON CUSTOMIZATION
+================================= */
+
+/* Tombol ubah dan edit */
+.btn-info,
+.btn-warning,
+a.btn-info,
+a.btn-warning,
+button.btn-info,
+button.btn-warning {
+    background-color: #087A50 !important;
+    border-color: #087A50 !important;
+    color: #FFFFFF !important;
+}
+
+/* Tombol hover */
+.btn-info:hover,
+.btn-warning:hover,
+a.btn-info:hover,
+a.btn-warning:hover {
+    background-color: #075638 !important;
+    border-color: #075638 !important;
+    color: #FFFFFF !important;
+}
+
+/* Tombol primary */
+.btn-primary,
+a.btn-primary {
+    background-color: #087A50 !important;
+    border-color: #087A50 !important;
+    color: #FFFFFF !important;
+}
+
+/* Tombol aksi Django Admin */
+.object-tools a,
+.addlink,
+.changelink {
+    background-color: #087A50 !important;
+    border-color: #087A50 !important;
+    color: #FFFFFF !important;
+}

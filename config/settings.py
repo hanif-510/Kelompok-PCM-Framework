@@ -61,6 +61,7 @@ if env_bool('HTTPS_ONLY'):
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -155,6 +156,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
 # Media: folder lokal jika STORAGE_BUCKET kosong, object storage S3 jika terisi.
 # Disk server tidak permanen, jadi produksi wajib memakai object storage.
 STORAGE_BUCKET = os.environ.get('STORAGE_BUCKET')
@@ -195,5 +197,27 @@ SILENCED_SYSTEM_CHECKS = ['mail.E001']
 MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+    },
+}
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Admin PCM Gatak",
+    "site_header": "PCM GATAK",
+    "site_brand": "PCM Gatak",
+    "welcome_sign": "Selamat Datang di Admin PCM Gatak",
+    "copyright": "PCM Gatak",
+
+    "show_sidebar": True,
+    "navigation_expanded": True,
+
+    "theme": "darkly",
+
+    "custom_css": "web/admin/custom_admin.css",
+    "custom_js": None,
+
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
     },
 }
