@@ -22,9 +22,9 @@ Website PCM Gatak, Kabupaten Sukoharjo, Jawa Tengah. Proyek ini dibuat sebagai t
 
 | Data | Sumber | Tanggal diambil | Pemberi izin |
 |------|--------|-----------------|--------------|
-| Logo Muhammadiyah | Wikimedia Commons | TODO | - |
-| Profil, struktur pimpinan, ranting, amal usaha | TODO | TODO | TODO |
-| Berita dan agenda | TODO | TODO | TODO |
+| Logo Muhammadiyah | Wikimedia Commons | 09-11-2026 | - |
+| Profil, struktur pimpinan, ranting, amal | TODO | TODO | TODO |
+| Berita dan agenda | Website Berita | 16-11-2026 | - |
 | Foto | TODO | TODO | TODO |
 
 ## Kontribusi Anggota
@@ -34,14 +34,14 @@ Website PCM Gatak, Kabupaten Sukoharjo, Jawa Tengah. Proyek ini dibuat sebagai t
 | Raden Bagus Indra Wijaya Nugraha | Backend, database, dan deployment. Penataan proyek uv dan dependensi, konfigurasi ruff, `.gitignore` dan `.env.example`, settings berbasis environment variable, WhiteNoise untuk file statis, kerangka command `seed_pcm` yang idempotent beserta testnya, serta test queryset berita terbit, slug, dan admin (termasuk perbaikan `max_length` slug untuk PostgreSQL). Database PostgreSQL di Supabase (Session pooler), migrasi ke produksi, dan Row Level Security di semua tabel. Penyimpanan media ke Supabase Storage lewat S3 yang sudah diuji unggah dari admin, HSTS, `SECURE_PROXY_SSL_HEADER`, dan pengecekan `check --deploy`. Perbaikan logo dan tampilan kartu anggota ber-KTAM di beranda. Review konfigurasi Docker. |
 | Muhammad Valentino Khansa | TODO |
 | Muhammad Afif Haravi | Mengembangkan tampilan dan fitur website, termasuk template dasar, header, footer, CSS halaman admin, kartu berita, halaman beranda, serta formulir kontak. Melakukan pengujian aplikasi Django dan Docker Compose, khususnya pengujian persistensi data dan media menggunakan Docker Volume serta pemulihan aplikasi setelah penghapusan volume. |
-| Hanif | Struktur awal website PCM Gatak, UI dan navigasi menu, penyesuaian tampilan/CSS website. Implementasi Docker melalui Dockerfile, .dockerignore, dan Docker Compose untuk menjalankan Django dan PostgreSQL. Pengujian build image dan container, konfigurasi permission dan startup, migrasi database, memastikan website berjalan melalui localhost:8000 menggunakan Gunicorn, docker. Pengembangan fitur berita dan detail berita, agenda mendatang/selesai, pencarian berita, pagination 6 berita per halaman, setup GitHub Actions untuk Django tests otomatis. |
+| Hanif | Struktur awal website PCM Gatak, UI dan navigasi menu, penyesuaian tampilan/CSS website. Implementasi Docker melalui Dockerfile, .dockerignore, dan Docker Compose untuk menjalankan Django dan PostgreSQL. Pengujian build image dan container, konfigurasi permission dan startup, migrasi database, memastikan website berjalan melalui localhost:8000 menggunakan Gunicorn, docker. Pengembangan fitur berita dan detail berita, agenda mendatang/selesai, pencarian berita, pagination 6 berita per halaman, setup GitHub Actions untuk Django tests otomatis, Deployment menggunakan Railway. |
 | Sandy Matin Falah | TODO |
 
 ## Produksi
 
 | Item | Pilihan | Alasan |
 |------|---------|--------|
-| URL produksi | TODO | Harus tetap menyala sampai penilaian selesai |
+| URL Produksi | Railway | Kemudahan penggunaan, integrasi dengan GitHub, serta mendukung framework Django dan database PostgreSQL. |
 | Platform | Render (Web Service memakai `Dockerfile`, paket gratis) <!-- perbarui setelah deploy --> | Memakai `Dockerfile` yang sama dengan Docker lokal, HTTPS disediakan otomatis, dan paket gratis cukup untuk penilaian |
 | Database | PostgreSQL di Supabase (Session pooler, port 5432) | Database terkelola dan gratis. Session pooler mendukung IPv4 dan cocok dengan koneksi Django biasa. Row Level Security aktif di semua tabel |
 | Penyimpanan gambar | Supabase Storage lewat endpoint S3 dan `django-storages` (bucket publik `media`) | Disk server platform deploy tidak permanen, sehingga gambar upload akan hilang setelah redeploy jika disimpan lokal. Sudah diuji: gambar yang diunggah dari admin tersimpan di bucket |
