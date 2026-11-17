@@ -6,7 +6,7 @@ from web.models import Profil
 DATA = {
     'nama': 'Pimpinan Cabang Muhammadiyah Gatak',
     'nama_singkat': 'PCM Gatak',
-    'tagline': '',
+    'tagline': 'Bersama Mencerahkan Dakwah dan Melayani Umat di Gatak',
     'tentang': (
         'PCM Gatak berada di Kecamatan Gatak, Kabupaten Sukoharjo, Jawa Tengah.'
     ),
