@@ -3,9 +3,13 @@
 {% block title %}Halaman Tidak Ditemukan{% endblock %}
 
 {% block content %}
-<section class="hero">
-  <h1>404</h1>
-  <p>Halaman yang kamu cari tidak ditemukan. Alamatnya mungkin salah atau halaman sudah dipindahkan.</p>
-  <p><a class="tombol" href="{% url 'web:beranda' %}">Kembali ke Beranda</a></p>
+<section class="galat-404">
+  <div class="galat-kode" aria-hidden="true">404</div>
+  <h1>Halaman Tidak Ditemukan</h1>
+  <p>Maaf, halaman yang Anda tuju tidak tersedia, telah dipindahkan, atau alamat URL yang dimasukkan kurang tepat. Silakan kembali ke halaman utama atau telusuri informasi terbaru kami.</p>
+  <div class="galat-aksi">
+    <a class="tombol" href="{% url 'web:beranda' %}">Kembali ke Beranda</a>
+    <a class="tombol tombol-garis" href="{% url 'web:daftar_berita' %}">Lihat Berita</a>
+  </div>
 </section>
 {% endblock %}
