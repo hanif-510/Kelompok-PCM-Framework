@@ -23,9 +23,9 @@ Website PCM Gatak, Kabupaten Sukoharjo, Jawa Tengah. Proyek ini dibuat sebagai t
 | Data | Sumber | Tanggal diambil | Pemberi izin |
 |------|--------|-----------------|--------------|
 | Logo Muhammadiyah | Wikimedia Commons | 09-11-2026 | - |
-| Profil, struktur pimpinan, ranting, amal | TODO | TODO | TODO |
+| Profil, struktur pimpinan, ranting, amal | Dokumen Ketua PCM | 12-11-2026 | Drs. Shodiq Purnomo, M.M. |
 | Berita dan agenda | Website Berita | 16-11-2026 | - |
-| Foto | TODO | TODO | TODO |
+| Foto | Website Berita | 15-11-2026 | - |
 
 ## Kontribusi Anggota
 
