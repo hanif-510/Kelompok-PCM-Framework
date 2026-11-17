@@ -30,6 +30,10 @@ class HalamanPublikTest(TestCase):
         response = self.client.get(reverse('web:detail_berita', args=[berita.slug]))
         self.assertEqual(response.status_code, 200)
 
+    def test_menu_navigasi_memuat_tautan_kontak(self):
+        response = self.client.get(reverse('web:beranda'))
+        self.assertContains(response, f'href="{reverse("web:kontak")}"')
+
 
 class BeritaTest(TestCase):
     def test_berita_draf_404(self):
