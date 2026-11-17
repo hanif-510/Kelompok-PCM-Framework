@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
   <section class="hero">
-    <h1>{% if profil %}{{ profil.nama }}{% else %}PCM Gatak{% endif %}</h1>
-    {% if profil.tagline %}<p>{{ profil.tagline }}</p>{% endif %}
     {% if profil.gambar_utama %}
-      <img src="{{ profil.gambar_utama.url }}" alt="{{ profil.nama }}">
+      <img class="hero__img" src="{{ profil.gambar_utama.url }}" alt="{{ profil.nama }}" fetchpriority="high">
+    {% else %}
+      <img class="hero__img" src="{% static 'web/img/hero.webp' %}" alt="Kegiatan jamaah di lingkungan PCM Gatak" fetchpriority="high">
     {% endif %}
+    <div class="hero__overlay">
+      <h1>{% if profil %}{{ profil.nama }}{% else %}PCM Gatak{% endif %}</h1>
+      {% if profil.tagline %}<p>{{ profil.tagline }}</p>{% endif %}
+    </div>
   </section>
 
   <section class="statistik">
