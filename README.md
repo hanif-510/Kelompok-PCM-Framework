@@ -35,20 +35,19 @@ Website PCM Gatak, Kabupaten Sukoharjo, Jawa Tengah. Proyek ini dibuat sebagai t
 | Muhammad Valentino Khansa | Mengisi dan mencari data riil PCM Gatak di seed data: susunan pimpinan dari SK PCM Gatak (pimpinan.py), daftar amal usaha (amal_usaha.py), dan data ketua ranting (ranting.py). |
 | Muhammad Afif Haravi | Mengembangkan tampilan dan fitur website, termasuk template dasar, header, footer, CSS halaman admin, kartu berita, halaman beranda, serta formulir kontak. Melakukan pengujian aplikasi Django dan Docker Compose, khususnya pengujian persistensi data dan media menggunakan Docker Volume serta pemulihan aplikasi setelah penghapusan volume. |
 | Hanif | Struktur awal website PCM Gatak, UI dan navigasi menu, penyesuaian tampilan/CSS website. Implementasi Docker melalui Dockerfile, .dockerignore, dan Docker Compose untuk menjalankan Django dan PostgreSQL. Pengujian build image dan container, konfigurasi permission dan startup, migrasi database, memastikan website berjalan melalui localhost:8000 menggunakan Gunicorn, docker. Pengembangan fitur berita dan detail berita, agenda mendatang/selesai, pencarian berita, pagination 6 berita per halaman, setup GitHub Actions untuk Django tests otomatis, Deployment menggunakan Railway. |
-| Sandy Matin Falah | TODO |
+| Sandy Matin Falah | Tidak ada kontribusi pada pengerjaan proyek ini. |
 
 ## Produksi
 
 | Item | Pilihan | Alasan |
 |------|---------|--------|
-| URL Produksi | Railway | Kemudahan penggunaan, integrasi dengan GitHub, serta mendukung framework Django dan database PostgreSQL. |
-| Platform | Render (Web Service memakai `Dockerfile`, paket gratis) <!-- perbarui setelah deploy --> | Memakai `Dockerfile` yang sama dengan Docker lokal, HTTPS disediakan otomatis, dan paket gratis cukup untuk penilaian |
+| URL Produksi | https://kelompok-pcm-framework-production.up.railway.app | Alamat publik dengan HTTPS dari Railway |
+| Platform | Railway (Web Service memakai `Dockerfile`) | Kemudahan penggunaan, integrasi dengan GitHub, dan memakai `Dockerfile` yang sama dengan Docker lokal |
 | Database | PostgreSQL di Supabase (Session pooler, port 5432) | Database terkelola dan gratis. Session pooler mendukung IPv4 dan cocok dengan koneksi Django biasa. Row Level Security aktif di semua tabel |
 | Penyimpanan gambar | Supabase Storage lewat endpoint S3 dan `django-storages` (bucket publik `media`) | Disk server platform deploy tidak permanen, sehingga gambar upload akan hilang setelah redeploy jika disimpan lokal. Sudah diuji: gambar yang diunggah dari admin tersimpan di bucket |
 
 **Catatan layanan gratis:**
 
-- Instance gratis Render tidur setelah sekitar 15 menit tanpa trafik dan butuh sekitar satu menit untuk bangun, jadi kunjungan pertama bisa lambat. Lihat [dokumentasi Render](https://render.com/docs/free).
 - Proyek Supabase paket gratis dijeda jika aktivitas database rendah selama 7 hari dan bisa dipulihkan lewat Resume project di dashboard. Lihat [dokumentasi Supabase](https://supabase.com/docs/guides/platform/free-plan-pausing).
 
 ## Cara Menjalankan
